@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Profile</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        table {
+            border-collapse: collapse;
+            width: 450px;
+        }
+        th {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #000;
+            font-size: 20px;
+        }
+        td {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>8.</h3>
+
+<table>
+    <tr>
+        <th colspan="2">PERSON PROFILE</th>
+    </tr>
+
+    <tr>
+        <td>Name</td>
+        <td><input type="text" name="name"></td>
+    </tr>
+
+    <tr>
+        <td>Email</td>
+        <td><input type="email" name="email"></td>
+    </tr>
+
+    <tr>
+        <td>Gender</td>
+        <td>
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+            <input type="radio" name="gender"> Other
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date of Birth</td>
+        <td>
+            <input type="text" size="2"> /
+            <input type="text" size="2"> /
+            <input type="text" size="4"> (dd/mm/yyyy)
+        </td>
+    </tr>
+
+    <tr>
+        <td>Blood Group</td>
+        <td>
+            <select>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+                <option>O+</option>
+                <option>O-</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Degree</td>
+        <td>
+            <input type="checkbox"> SSC
+            <input type="checkbox"> HSC
+            <input type="checkbox"> BSc.
+            <input type="checkbox"> MSc.
+        </td>
+    </tr>
+
+    <tr>
+        <td>Photo</td>
+        <td><input type="file"></td>
+    </tr>
+
+    <tr>
+        <td colspan="2" style="text-align:center;">
+            <button>Submit</button>
+            <button type="reset">Reset</button>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
