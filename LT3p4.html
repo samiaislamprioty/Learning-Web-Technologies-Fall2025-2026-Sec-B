@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+    <script>
+        function validateDOB() {
+            let dd = document.getElementById("dd").value.trim();
+            let mm = document.getElementById("mm").value.trim();
+            let yyyy = document.getElementById("yyyy").value.trim();
+
+            // Check empty
+            if (dd === "" || mm === "" || yyyy === "") {
+                alert("Date of Birth fields cannot be empty!");
+                return false;
+            }
+
+            // Convert to numbers
+            dd = Number(dd);
+            mm = Number(mm);
+            yyyy = Number(yyyy);
+
+            // Validate ranges
+            if (isNaN(dd) || dd < 1 || dd > 31) {
+                alert("Day must be a valid number between 1 and 31!");
+                return false;
+            }
+
+            if (isNaN(mm) || mm < 1 || mm > 12) {
+                alert("Month must be a valid number between 1 and 12!");
+                return false;
+            }
+
+            if (isNaN(yyyy) || yyyy < 1900 || yyyy > 2016) {
+                alert("Year must be a valid number between 1900 and 2016!");
+                return false;
+            }
+
+            alert("Date of Birth is valid!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Date of Birth</h2>
+
+    <form onsubmit="return validateDOB()">
+        <fieldset style="width:220px;">
+            <legend>Date of Birth</legend>
+
+            <input type="text" id="dd" placeholder="dd" size="2"> /
+            <input type="text" id="mm" placeholder="mm" size="2"> /
+            <input type="text" id="yyyy" placeholder="yyyy" size="4">
+
+            <br><br>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+
+</body>
+</html>
