@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Profile</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            background: #eee;
+        }
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function validateForm() {
+
+            // NAME
+            let name = document.getElementById("name").value.trim();
+            if (name === "") {
+                alert("Name cannot be empty!");
+                return false;
+            }
+            let words = name.split(" ");
+            if (words.length < 2) {
+                alert("Name must contain at least two words!");
+                return false;
+            }
+            let namePattern = /^[A-Za-z][A-Za-z.\- ]+$/;
+            if (!namePattern.test(name)) {
+                alert("Invalid Name! Must start with a letter and contain letters, dot, or dash.");
+                return false;
+            }
+
+            // EMAIL
+            let email = document.getElementById("email").value.trim();
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+            if (email === "" || !emailPattern.test(email)) {
+                alert("Enter a valid email!");
+                return false;
+            }
+
+            // GENDER
+            let male = document.getElementById("male").checked;
+            let female = document.getElementById("female").checked;
+            let other = document.getElementById("other").checked;
+            if (!male && !female && !other) {
+                alert("Please select a gender!");
+                return false;
+            }
+
+            // DATE OF BIRTH
+            let dd = document.getElementById("dd").value.trim();
+            let mm = document.getElementById("mm").value.trim();
+            let yyyy = document.getElementById("yyyy").value.trim();
+
+            if (dd === "" || mm === "" || yyyy === "") {
+                alert("Date of Birth cannot be empty!");
+                return false;
+            }
+            if (isNaN(dd) || dd < 1 || dd > 31) {
+                alert("Day must be 1–31");
+                return false;
+            }
+            if (isNaN(mm) || mm < 1 || mm > 12) {
+                alert("Month must be 1–12");
+                return false;
+            }
+            if (isNaN(yyyy) || yyyy < 1900 || yyyy > 2016) {
+                alert("Year must be 1900–2016");
+                return false;
+            }
+
+            // BLOOD GROUP
+            let bg = document.getElementById("bloodGroup").value;
+            if (bg === "") {
+                alert("Select a blood group!");
+                return false;
+            }
+
+            // DEGREE
+            let ssc = document.getElementById("ssc").checked;
+            let hsc = document.getElementById("hsc").checked;
+            let bsc = document.getElementById("bsc").checked;
+            let msc = document.getElementById("msc").checked;
+            if (!ssc && !hsc && !bsc && !msc) {
+                alert("Select at least one degree!");
+                return false;
+            }
+
+            // PHOTO
+            let photo = document.getElementById("photo").value;
+            if (photo === "") {
+                alert("Upload a photo!");
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+
+
+<body>
+    <h2>PERSON PROFILE</h2>
+
+    <form onsubmit="return validateForm()" enctype="multipart/form-data">
+        <table align="center" width="450">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="name"></td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td><input type="text" id="email"></td>
+            </tr>
+
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" id="male" name="gender"> Male
+                    <input type="radio" id="female" name="gender"> Female
+                    <input type="radio" id="other" name="gender"> Other
+                </td>
+            </tr>
+
+            <tr>
+                <td>Date of Birth</td>
+                <td>
+                    <input type="text" id="dd" size="2" placeholder="dd"> /
+                    <input type="text" id="mm" size="2" placeholder="mm"> /
+                    <input type="text" id="yyyy" size="4" placeholder="yyyy">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Blood Group</td>
+                <td>
+                    <select id="bloodGroup">
+                        <option value="">--Select--</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Degree</td>
+                <td>
+                    <input type="checkbox" id="ssc"> SSC
+                    <input type="checkbox" id="hsc"> HSC
+                    <input type="checkbox" id="bsc"> BSc 
+                    <input type="checkbox" id="msc"> MSc
+                </td>
+            </tr>
+
+            <tr>
+                <td>Photo</td>
+                <td><input type="file" id="photo"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
