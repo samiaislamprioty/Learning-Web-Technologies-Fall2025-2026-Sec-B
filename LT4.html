@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Registration </title>
+</head>
+<body>
+
+<h2> Registration Form</h2>
+
+<label>Enter Field Name:</label>
+<input type="text" id="customFieldName" placeholder="Example: Father Name, Passport No">
+<button id="addBtn">+ Add Field</button>
+
+<br><br>
+
+<div id="fieldArea"></div>
+
+<br>
+<button id="submitBtn">Submit</button>
+
+<h3>Submitted Data</h3>
+<div id="finalData"></div>
+
+<script>
+let count = 0;
+
+// ADD FIELD
+document.getElementById("addBtn").addEventListener("click", function ()
+{
+    let fieldName = document.getElementById("customFieldName").value.trim();
+
+    if (fieldName === "") 
+    {
+        alert("Please enter a field name.");
+        return;
+    }
+
+    count++;
+
+    let html = `
+        <div>
+            <label><b>${fieldName}:</b></label><br>
+            <input id="field${count}" data-label="${fieldName}" placeholder="Enter ${fieldName}">
+            <br>
+            <small id="error${count}" style="color:red;"></small>
+        </div><br>
+    `;
+
+    document.getElementById("fieldArea").innerHTML += html;
+    document.getElementById("customFieldName").value = "";
+});
+
+
+// VALIDATION FUNCTION
+function validateField(label, value) {
+    let lower = label.toLowerCase();
+    let valid = true;
+    let msg = "";
+
+    // REQUIRED
+    if (value === "") {
+        return "This field is required.";
+    }
+
+    // NAME validation
+    if (lower.includes("name")) {
+        if (!/^[A-Za-z ]+$/.test(value)) {
+            return "Only letters allowed.";
+        }
+    }
+
+    // EMAIL validation
+    if (lower.includes("email")) {
+        if (!/^\S+@\S+\.\S+$/.test(value)) {
+            return "Invalid email format.";
+        }
+    }
+
+    // PHONE validation
+    if (lower.includes("phone") || lower.includes("mobile") || lower.includes("contact")) {
+        if (!/^[0-9]+$/.test(value)) {
+            return "Phone must be digits only.";
+        }
+        if (value.length < 10) {
+            return "Phone must be at least 10 digits.";
+        }
+    }
+
+    // AGE validation
+    if (lower.includes("age")) {
+        if (!/^[0-9]+$/.test(value)) {
+            return "Age must be a number.";
+        }
+        if (value < 1 || value > 120) {
+            return "Age must be between 1 and 120.";
+        }
+    }
+
+    // NATIONAL ID / NID / PASSPORT validation
+    if (lower.includes("nid") || lower.includes("national") || lower.includes("passport")) {
+        if (!/^[0-9]+$/.test(value)) {
+            return "Must contain digits only.";
+        }
+        if (value.length < 5 || value.length > 20) {
+            return "Must be 5–20 digits.";
+        }
+    }
+
+    return ""; // valid
+}
+
+
+
+// SUBMIT FORM
+document.getElementById("submitBtn").addEventListener("click", function () {
+
+    let inputs = document.querySelectorAll("#fieldArea input");
+    let finalData = document.getElementById("finalData");
+    finalData.innerHTML = "";
+
+    if (inputs.length === 0) {
+        alert("Please add at least one field.");
+        return;
+    }
+
+    let allValid = true;
+
+    inputs.forEach(input => {
+        let idNum = input.id.replace("field", "");
+        let errorBox = document.getElementById("error" + idNum);
+
+        let label = input.getAttribute("data-label");
+        let value = input.value.trim();
+
+        let errorMessage = validateField(label, value);
+
+        if (errorMessage !== "") {
+            errorBox.textContent = errorMessage;
+            allValid = false;
+        } else {
+            errorBox.textContent = "";
+        }
+    });
+
+    if (!allValid) {
+        alert("❌ Please correct all errors.");
+        return;
+    }
+
+    // OUTPUT IF VALID
+    let output = "✔ Form Submitted Successfully!\n\n";
+
+    inputs.forEach(input => {
+        let label = input.getAttribute("data-label");
+        let value = input.value.trim();
+
+        finalData.innerHTML += `<p><b>${label}:</b> ${value}</p>`;
+        output += `${label}: ${value}\n`;
+    });
+
+    alert(output);
+});
+</script>
+
+</body>
+</html>
