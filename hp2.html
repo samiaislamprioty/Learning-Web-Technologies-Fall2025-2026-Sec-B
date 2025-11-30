@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="=UTF-8">
+        <title>Admission Form</title>
+    </head>
+
+    <body>
+        <h2>University Admission Form</h2>
+        <form>
+
+<!--personal info-->
+        <fieldset>
+         <legend><b>Personal Information</b></legend> <!--title er moto kaj kore legend-->
+
+            <label>Full Name : </label> <br>
+            <input type="text" name="fullname" required maxlength="50"> <br> <br>
+            
+            <label>Email Address : </label> <br>
+            <input type="email" name="email" required> <br> <br>
+
+            <label>Phone Number : </label> <br>
+            <input type="text" name="phone" required maxlength="15"> <br> <br>
+
+            <label>Date of Birth : </label> <br>
+            <input type="date" name="dob" required> <br> <br>
+
+            <label>Gender : </label> <br>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female" required> Female
+            <input type="radio" name="gender" value="Other" required> Other <br><br>
+
+        </fieldset> 
+        <br>   
+
+<!--Academic Background-->
+        <fieldset>
+         <legend><b>Academic Information</b></legend>
+            
+            <label>SSC GPA :</label> <br>
+            <input type="text" name="ssc" required maxlength="4"> <br> <br>
+
+            <label>HSC GPA :</label> <br>
+            <input type="text" name="hsc" required maxlength="4"> <br> <br>
+
+            <label>Preferred Depertment :</label> <br>
+            <select name="Depertment" required>
+                <option value="">---Select Depertment---</option>
+                <option value="CSE">Computer Science & Engineering</option>
+                <option value="EEE">Electrical & Electronic Engineering</option>
+                <option value="BBA">Bachelor of Business Administration</option>
+                <option value="LAW">LAW</option>
+            </select> <br><br>
+
+            <label> Interests : </label> <br>
+            <input type="checkbox" name="Interest" value="Sports"> Sports
+            <input type="checkbox" name="Interest" value="Coding"> Coding
+            <input type="checkbox" name="Interest" value="Dance"> Dance
+            <input type="checkbox" name="Interest" value="Music"> Music
+            <input type="checkbox" name="Interest" value="Art"> Art
+
+        </fieldset>
+        <br>
+
+        <!--Document Upload-->
+        <fieldset>
+            <legend><b>Upload Documents</b></legend>
+
+            <label> Upload Photo (JPG/PNG) :</label> <br>
+            <input type="file" name="photo" required><br><br>
+
+            <label> Upload Transcript (Docx/PDF) :</label> <br>
+            <input type="file" name="Transcript" required><br><br>
+
+        </fieldset>
+        <br>
+
+        <!--Button-->
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+
+
+        </form>
+    </body>
+</html>
