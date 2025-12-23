@@ -1,23 +1,48 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Login</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Login</h1>
-  
-  <form action="login.php" method="post">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" value="user@example.com" required>
-    <br><br>
-    
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" value="password123" required>
-    <br><br>
-    
-    <button type="submit">Login</button>
-    <a href="home.html">Go to home Page</a>
-  </form>
+
+<div class="container">
+
+    <h2>Login</h2>
+
+    <form onsubmit="return loginValidate()">
+
+        <input type="text" id="loginEmail" placeholder="Email">
+        <div class="error-text" id="loginEmailError"></div>
+
+        <div class="password-wrapper">
+            <input type="password" id="loginPass" placeholder="Password">
+            <span class="eye-icon" id="eye1"
+                  onclick="togglePassword('loginPass','eye1')">👁️</span>
+        </div>
+
+        <div class="error-text" id="loginPassError"></div>
+
+        <button class="btn" type="submit">Login</button>
+    </form>
+
+    <div style="text-align:center; margin-top:10px;">
+        <a href="register.html">Create Account</a> |
+        <a href="forgot.html">Forgot Password?</a>
+    </div>
+
+</div>
+
+<div id="popup" class="popup">
+    <div class="popup-box">
+        <div id="popupMessage">
+            No account found. Please register first.
+        </div>
+        <br>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
