@@ -12,7 +12,7 @@ for ($i = 1; $i <= 3; $i++) {
 
 <?php
 
-for ($i = 3; $i >= 1; $i--) {   // rows: 3, 2, 1
+for ($i = 3; $i >= 1; $i--) {   
     for ($j = 1; $j <= $i; $j++) {
         echo $j . " ";
     }
@@ -24,12 +24,12 @@ for ($i = 3; $i >= 1; $i--) {   // rows: 3, 2, 1
 
 <?php
 
-$char = 'A'; // start letter
+$char = 'A'; 
 
-for ($i = 1; $i <= 3; $i++) {    // rows
+for ($i = 1; $i <= 3; $i++) {    
     for ($j = 1; $j <= $i; $j++) {
         echo $char . " ";
-        $char++; // move to next letter
+        $char++; 
     }
     echo "<br>";
 }

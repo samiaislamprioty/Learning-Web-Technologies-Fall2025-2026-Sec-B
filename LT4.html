@@ -106,12 +106,12 @@ function validateField(label, value) {
         }
     }
 
-    return ""; // valid
+    return ""; 
 }
 
 
 
-// SUBMIT FORM
+
 document.getElementById("submitBtn").addEventListener("click", function () {
 
     let inputs = document.querySelectorAll("#fieldArea input");
@@ -147,7 +147,7 @@ document.getElementById("submitBtn").addEventListener("click", function () {
         return;
     }
 
-    // OUTPUT IF VALID
+    
     let output = "✔ Form Submitted Successfully!\n\n";
 
     inputs.forEach(input => {

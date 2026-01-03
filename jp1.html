@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Portal Registration</title>
+</head>
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form id="registerForm">
+
+    <!-- Full Name -->
+    <label>Full Name:</label><br>
+    <input type="text" id="name">
+    <p id="nameError" style="color:red;"></p>
+
+    <!-- Email -->
+    <label>Email:</label><br>
+    <input type="text" id="email">
+    <p id="emailError" style="color:red;"></p>
+
+    <!-- Password -->
+    <label>Password:</label><br>
+    <input type="password" id="password">
+    <p id="passError" style="color:red;"></p>
+
+    <!-- Confirm Password -->
+    <label>Confirm Password:</label><br>
+    <input type="password" id="confirmPassword">
+    <p id="confirmError" style="color:red;"></p>
+
+    <!-- Phone -->
+    <label>Phone Number:</label><br>
+    <input type="text" id="phone">
+    <p id="phoneError" style="color:red;"></p>
+
+    <button type="submit">Submit</button>
+</form>
+
+<h3 id="successMsg" style="color:green;"></h3>
+
+<script>
+// Select form
+const form = document.getElementById("registerForm");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();  // Stop default submission
+
+    // Get all values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const pass = document.getElementById("password").value;
+    const cpass = document.getElementById("confirmPassword").value;
+    const phone = document.getElementById("phone").value.trim();
+
+    // Error fields
+    let nameErr = document.getElementById("nameError");
+    let emailErr = document.getElementById("emailError");
+    let passErr = document.getElementById("passError");
+    let cpassErr = document.getElementById("confirmError");
+    let phoneErr = document.getElementById("phoneError");
+    let successMsg = document.getElementById("successMsg");
+
+    // Clear previous messages
+    nameErr.innerText = "";
+    emailErr.innerText = "";
+    passErr.innerText = "";
+    cpassErr.innerText = "";
+    phoneErr.innerText = "";
+    successMsg.innerText = "";
+
+    let valid = true;
+
+    // NAME VALIDATION
+    if (name === "") {
+        nameErr.innerText = "Full Name is required.";
+        valid = false;
+    }
+
+    // EMAIL VALIDATION
+    if (email === "") {
+        emailErr.innerText = "Email is required.";
+        valid = false;
+    } else if (!email.includes("@") || !email.includes(".")) {
+        emailErr.innerText = "Invalid Email Format.";
+        valid = false;
+    }
+
+    // PASSWORD VALIDATION
+    if (pass.length < 6) {
+        passErr.innerText = "Password must be at least 6 characters.";
+        valid = false;
+    }
+
+    // CONFIRM PASSWORD
+    if (pass !== cpass) {
+        cpassErr.innerText = "Passwords do not match.";
+        valid = false;
+    }
+
+    // PHONE VALIDATION
+    if (phone === "") {
+        phoneErr.innerText = "Phone number is required.";
+        valid = false;
+    } else if (isNaN(phone)) {
+        phoneErr.innerText = "Phone number must contain only digits.";
+        valid = false;
+    }
+
+    // If everything is valid
+    if (valid === true) {
+        successMsg.innerText = "Registration Successful!";
+        form.reset(); // clear form
+    }
+});
+</script>
+
+</body>
+</html>
