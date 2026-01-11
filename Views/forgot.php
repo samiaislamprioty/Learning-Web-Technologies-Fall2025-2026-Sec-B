@@ -51,8 +51,8 @@ if(isset($_POST["submit"])){
     exit;
   }
 }else{
-  // just show page
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -90,7 +90,6 @@ if(isset($_POST["submit"])){
   </div>
 </div>
 
-<!-- popup -->
 <div class="popup" id="popup">
   <div class="popup-box">
     <p id="popupText"></p>
