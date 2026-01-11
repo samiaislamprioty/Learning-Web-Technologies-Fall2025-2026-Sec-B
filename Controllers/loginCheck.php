@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } else {
 
-        // Sir-style: direct mysqli_query (no prepare, no bind)
         $sql = "SELECT * FROM users WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
 
@@ -22,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $user = mysqli_fetch_assoc($result);
 
-            // REQUIRED because DB uses password_hash
             if (password_verify($password, $user['password_hash'])) {
 
                 setcookie("status", "true", time() + 3000, "/");
