@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "med_verify";   // change only if your DB name is different
+$db   = "med_verify";  
 
 $conn = mysqli_connect("localhost", "root", "", "med_verify");
 
