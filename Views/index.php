@@ -1,16 +1,13 @@
 <?php
 session_start();
 
-// Sir-style login check (only session)
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
 }
 
-// Default values
 $name = "User";
 $email = "";
 
-// Session values check
 if (isset($_SESSION["user_name"])) {
     $name = $_SESSION["user_name"];
 }
