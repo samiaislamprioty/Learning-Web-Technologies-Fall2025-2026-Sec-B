@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-// Sir-style: only cookie check for "already logged in"
 if (isset($_COOKIE['status'])) {
     header("Location: index.php");
 }
 
-// Sir-style session message pattern (no ??)
 $err = "";
 $success = "";
 
@@ -17,7 +15,6 @@ if (isset($_SESSION["success"])) {
     $success = $_SESSION["success"];
 }
 
-// Sir-style: separate unset
 unset($_SESSION["err"]);
 unset($_SESSION["success"]);
 ?>
@@ -61,7 +58,6 @@ unset($_SESSION["success"]);
   </div>
 </div>
 
-<!-- popup -->
 <div class="popup" id="popup">
   <div class="popup-box">
     <p id="popupText"></p>
