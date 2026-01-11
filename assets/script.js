@@ -70,12 +70,10 @@ function checkStrength(pass) {
   if (hasDigit(pass)) score++;
   if (hasSpecial(pass)) score++;
 
-  // just basic width (no fancy colors)
   bar.style.width = (score * 25) + "%";
 }
 
 
-/* Registration validation */
 async function registerValidate() {
   let ok = true;
 
@@ -108,7 +106,6 @@ async function registerValidate() {
   else if (!(hasLetter(pass) && hasDigit(pass))) { showError("regPass", "regPassError", "Must include letters & numbers"); ok = false; }
   else showSuccess("regPass", "regPassError");
 
-  // duplicate email check (only if basic email ok)
   if (ok) {
     const exists = await checkEmailExists(email);
     if (exists) {
@@ -120,7 +117,6 @@ async function registerValidate() {
   return ok;
 }
 
-/* Login validation */
 async function loginValidate() {
   let ok = true;
   const email = document.getElementById("logEmail").value.trim();
@@ -133,7 +129,6 @@ async function loginValidate() {
   if (!pass) { showError("logPass", "logPassError", "Password required"); ok = false; }
   else showSuccess("logPass", "logPassError");
 
-  // If user hasn't registered, show popup
   if (ok) {
     const exists = await checkEmailExists(email);
     if (!exists) {
@@ -145,7 +140,6 @@ async function loginValidate() {
   return ok;
 }
 
-/* Forgot validation */
 async function forgotValidate() {
   let ok = true;
   const email = document.getElementById("forEmail").value.trim();
@@ -171,7 +165,6 @@ async function forgotValidate() {
   return ok;
 }
 
-/* Popup */
 function openPopup(msg) {
   const pop = document.getElementById("popup");
   const text = document.getElementById("popupText");
