@@ -2,7 +2,6 @@
 session_start();
 require_once '../Models/db.php';
 
-// Session message read (sir-style: no ??, no trim)
 $err = "";
 $success = "";
 
@@ -18,7 +17,6 @@ unset($_SESSION["success"]);
 
 if (isset($_POST["submit"])) {
 
-    // Direct POST values (no trim, no ??)
     $fname = $_POST["first_name"];
     $lname = $_POST["last_name"];
     $email = $_POST["email"];
@@ -26,13 +24,11 @@ if (isset($_POST["submit"])) {
     $dob   = $_POST["dob"];
     $pass  = $_POST["password"];
 
-    // Simple null/empty check like sir
     if ($fname == "" || $lname == "" || $email == "" || $phone == "" || $dob == "" || $pass == "") {
         $_SESSION["err"] = "Please fill all fields.";
         header("Location: register.php");
     } else {
 
-        // Email exists check (sir-style: mysqli_query + mysqli_num_rows)
         $sqlCheck = "SELECT id FROM users WHERE email='$email'";
         $checkRes = mysqli_query($conn, $sqlCheck);
 
@@ -41,10 +37,8 @@ if (isset($_POST["submit"])) {
             header("Location: register.php");
         } else {
 
-            // Keep ONLY password_hash as you requested
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
 
-            // Insert (simple query)
             $sqlInsert = "INSERT INTO users (first_name, last_name, email, phone, dob, password_hash)
                           VALUES ('$fname', '$lname', '$email', '$phone', '$dob', '$passHash')";
 
@@ -111,7 +105,6 @@ if (isset($_POST["submit"])) {
   </div>
 </div>
 
-<!-- popup -->
 <div class="popup" id="popup">
   <div class="popup-box">
     <p id="popupText"></p>
